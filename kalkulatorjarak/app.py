@@ -1,37 +1,55 @@
-
 import streamlit as st
 
-st.set_page_config(page_title="Kalkulator Jarak, Kecepatan, Waktu", layout="centered")
-
-st.title("🧮 Kalkulator Jarak, Kecepatan, dan Waktu")
+st.set_page_config(page_title="Kalkulator JKW - Discovery Learning", layout="centered")
+st.title("📚 Kalkulator Jarak, Kecepatan, Waktu (Discovery Learning)")
 
 st.markdown("""
-### Gunakan kalkulator ini untuk menghitung salah satu dari:
-- **Jarak**: jika diketahui Kecepatan dan Waktu
-- **Kecepatan**: jika diketahui Jarak dan Waktu
-- **Waktu**: jika diketahui Jarak dan Kecepatan
+### 🔍 **Pembelajaran Interaktif dengan Metode Discovery Learning**
+Silakan eksplorasi hubungan antara **jarak**, **kecepatan**, dan **waktu** melalui simulasi berikut ini.
+---
 """)
 
-# Pilih jenis perhitungan
-option = st.selectbox("Pilih yang ingin dihitung:", ["Jarak", "Kecepatan", "Waktu"])
+with st.expander("📘 Teori Singkat"):
+    st.markdown("""
+    **Rumus dasar hubungan JKW**:
+    - Jarak = Kecepatan × Waktu
+    - Kecepatan = Jarak ÷ Waktu
+    - Waktu = Jarak ÷ Kecepatan
 
-if option == "Jarak":
-    kecepatan = st.number_input("Masukkan Kecepatan (km/jam):", min_value=0.0, format="%.2f")
-    waktu = st.number_input("Masukkan Waktu (jam):", min_value=0.0, format="%.2f")
-    if st.button("Hitung Jarak"):
-        jarak = kecepatan * waktu
-        st.success(f"Jarak = {jarak:.2f} km")
+    Cobalah berbagai nilai untuk melihat bagaimana satu variabel mempengaruhi yang lain.
+    """)
 
-elif option == "Kecepatan":
-    jarak = st.number_input("Masukkan Jarak (km):", min_value=0.0, format="%.2f")
-    waktu = st.number_input("Masukkan Waktu (jam):", min_value=0.01, format="%.2f")
-    if st.button("Hitung Kecepatan"):
-        kecepatan = jarak / waktu
-        st.success(f"Kecepatan = {kecepatan:.2f} km/jam")
+# Pilihan eksplorasi
+st.subheader("🧠 Eksplorasi Konsep")
+option = st.radio("Apa yang ingin kamu temukan?", ["Jarak", "Kecepatan", "Waktu"], horizontal=True)
 
-elif option == "Waktu":
-    jarak = st.number_input("Masukkan Jarak (km):", min_value=0.0, format="%.2f")
-    kecepatan = st.number_input("Masukkan Kecepatan (km/jam):", min_value=0.01, format="%.2f")
-    if st.button("Hitung Waktu"):
-        waktu = jarak / kecepatan
-        st.success(f"Waktu = {waktu:.2f} jam")
+with st.form(key='form'):
+    if option == "Jarak":
+        kecepatan = st.slider("🔧 Kecepatan (km/jam)", 0.0, 200.0, 60.0, step=1.0)
+        waktu = st.slider("⏱️ Waktu (jam)", 0.0, 10.0, 1.0, step=0.1)
+        submit = st.form_submit_button("💡 Temukan Jarak")
+        if submit:
+            jarak = kecepatan * waktu
+            st.success(f"📏 Jarak = {kecepatan} × {waktu} = **{jarak:.2f} km**")
+            st.info("✅ Semakin besar kecepatan atau waktu, maka jarak akan semakin jauh.")
+
+    elif option == "Kecepatan":
+        jarak = st.slider("📏 Jarak (km)", 0.0, 500.0, 120.0, step=1.0)
+        waktu = st.slider("⏱️ Waktu (jam)", 0.1, 10.0, 2.0, step=0.1)
+        submit = st.form_submit_button("💡 Temukan Kecepatan")
+        if submit:
+            kecepatan = jarak / waktu
+            st.success(f"🚗 Kecepatan = {jarak} ÷ {waktu} = **{kecepatan:.2f} km/jam**")
+            st.info("✅ Jika jarak tetap, maka makin lama waktunya, makin kecil kecepatannya.")
+
+    elif option == "Waktu":
+        jarak = st.slider("📏 Jarak (km)", 0.0, 500.0, 100.0, step=1.0)
+        kecepatan = st.slider("🚗 Kecepatan (km/jam)", 1.0, 200.0, 50.0, step=1.0)
+        submit = st.form_submit_button("💡 Temukan Waktu")
+        if submit:
+            waktu = jarak / kecepatan
+            st.success(f"⏱️ Waktu = {jarak} ÷ {kecepatan} = **{waktu:.2f} jam**")
+            st.info("✅ Semakin cepat lajunya, semakin singkat waktu yang dibutuhkan.")
+
+st.markdown("---")
+st.caption("🧑‍🏫 Media ini dirancang untuk pembelajaran aktif dan eksploratif.")
