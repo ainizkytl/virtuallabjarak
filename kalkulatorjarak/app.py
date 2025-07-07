@@ -11,55 +11,70 @@ Temukan sendiri rumus dan keterkaitannya!
 ---
 """)
 
-with st.expander("📘 Penjelasan Konsep"):
+with st.expander("📘 Penjelasan Konsep Dasar"):
     st.markdown("""
-    - **Jarak**: seberapa jauh benda bergerak (km).
-    - **Kecepatan**: seberapa cepat benda bergerak (km/jam).
-    - **Waktu**: berapa lama benda bergerak (jam).
+    - **Jarak (S)**: seberapa jauh benda bergerak (km)
+    - **Kecepatan (v)**: seberapa cepat benda bergerak (km/jam)
+    - **Waktu (t)**: lamanya benda bergerak (jam)
     
-    🧠 Gunakan eksplorasi di bawah ini untuk menemukan sendiri rumus masing-masing.
+    ⚠️ Salah satu konsep penting dalam gerak lurus adalah:
+    > **S = v × t**  
+    > **v = S ÷ t**  
+    > **t = S ÷ v**
+    
+    💡 Tapi, yuk coba **temukan rumus ini sendiri** lewat eksplorasi di bawah ini!
     """)
 
-# Layout 3 kolom untuk eksplorasi serentak
+# ========================
+# 🧪 Eksplorasi Interaktif
+# ========================
+
 col1, col2, col3 = st.columns(3)
 
-# ========================
-# 🟦 KOLOM 1: JARAK
-# ========================
 with col1:
     st.subheader("📏 Temukan Jarak")
     kecepatan_j = st.slider("🚗 Kecepatan (km/jam)", 0, 200, 60, key="k_j")
     waktu_j = st.slider("⏱️ Waktu (jam)", 0, 10, 2, key="w_j")
-    if kecepatan_j and waktu_j:
-        jarak = int(kecepatan_j * waktu_j)
-        st.success(f"Jarak = {jarak} km")
+    jarak = kecepatan_j * waktu_j
+    st.success(f"Jarak = {int(jarak)} km")
 
-
-# ========================
-# 🟩 KOLOM 2: KECEPATAN
-# ========================
 with col2:
     st.subheader("🚀 Temukan Kecepatan")
     jarak_k = st.slider("📏 Jarak (km)", 0, 500, 120, key="j_k")
-    waktu_k = st.slider("⏱️ Waktu (jam)", 1, 10, 2, key="w_k")  # waktu tidak boleh 0
-    if jarak_k and waktu_k:
-        kecepatan = int(jarak_k / waktu_k)
-        st.success(f"Kecepatan = {kecepatan} km/jam")
-    
-# ========================
-# 🟥 KOLOM 3: WAKTU
-# ========================
+    waktu_k = st.slider("⏱️ Waktu (jam)", 1, 10, 2, key="w_k")
+    kecepatan = jarak_k / waktu_k
+    st.success(f"Kecepatan = {int(kecepatan)} km/jam")
+
 with col3:
     st.subheader("⏱️ Temukan Waktu")
     jarak_w = st.slider("📏 Jarak (km)", 0, 500, 100, key="j_w")
-    kecepatan_w = st.slider("🚗 Kecepatan (km/jam)", 1, 200, 50, key="k_w")  # kecepatan tidak boleh 0
-    if jarak_w and kecepatan_w:
-        waktu = int(jarak_w / kecepatan_w)
-        st.success(f"Waktu = {waktu} jam")
-    
+    kecepatan_w = st.slider("🚗 Kecepatan (km/jam)", 1, 200, 50, key="k_w")
+    waktu = jarak_w / kecepatan_w
+    st.success(f"Waktu = {round(waktu, 2)} jam")
 
 # ========================
-# 📈 GRAFIK SIMULASI
+# 🧠 Discovery Learning Prompt
+# ========================
+with st.expander("🧠 Refleksi: Apa Hubungan Ketiganya?"):
+    st.markdown("""
+    🔍 **Coba perhatikan!**  
+    - Jika kecepatan dinaikkan tapi waktu tetap, apa yang terjadi pada jarak?
+    - Jika jarak tetap dan waktu lebih lama, bagaimana kecepatan berubah?
+    - Jika kecepatan tetap dan jarak naik, bagaimana waktu berubah?
+
+    👉 Dari eksplorasi di atas, dapatkah kamu menebak **rumus** yang menghubungkan ketiganya?
+    """)
+
+    st.markdown("**💬 Jawaban Refleksi Otomatis (bisa dibandingkan):**")
+    with st.container():
+        st.info("""
+        - **Jarak (S)** = Kecepatan (v) × Waktu (t)  
+        - **Kecepatan (v)** = Jarak (S) ÷ Waktu (t)  
+        - **Waktu (t)** = Jarak (S) ÷ Kecepatan (v)
+        """)
+        
+# ========================
+# 📈 Grafik Simulasi Gerak
 # ========================
 st.markdown("---")
 st.subheader("📈 Simulasi Grafik Gerak (Jarak vs Waktu)")
@@ -77,9 +92,19 @@ with col_g1:
     ax.plot(waktu_array, jarak_array, color="blue", linewidth=2)
     ax.set_xlabel("Waktu (jam)")
     ax.set_ylabel("Jarak (km)")
-    ax.set_title("Grafik Gerak Lurus: Jarak vs Waktu")
+    ax.set_title(f"Grafik Gerak Lurus: Kecepatan {kecepatan_sim} km/jam")
     ax.grid(True)
 
     st.pyplot(fig)
 
-st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri. Media ini dirancang untuk pembelajaran aktif.")
+with st.expander("📊 Interpretasi Grafik"):
+    st.markdown(f"""
+    - Grafik menunjukkan hubungan **linier** antara jarak dan waktu.
+    - Semakin besar waktu, semakin jauh jarak yang ditempuh.
+    - **Gradien (kemiringan garis)** menunjukkan kecepatan.
+    - Pada kecepatan {kecepatan_sim} km/jam, setiap jamnya bertambah {kecepatan_sim} km.
+
+    💬 Apa yang akan terjadi jika kecepatan dinaikkan?
+    """)
+
+st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri. Media ini dirancang untuk pembelajaran aktif dan reflektif.")
