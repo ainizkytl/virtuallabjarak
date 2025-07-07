@@ -2,99 +2,78 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.set_page_config(page_title="Kalkulator JKW - Discovery Learning", layout="centered")
-st.title("📚 Kalkulator Jarak, Kecepatan, Waktu (Discovery Learning)")
+st.set_page_config(page_title="Kalkulator JKW Discovery - All in One", layout="wide")
+st.title("📚 Kalkulator Jarak – Kecepatan – Waktu (Discovery Learning)")
 
 st.markdown("""
-### 🔍 Eksplorasi Interaktif
-Eksplorasilah masing-masing konsep secara terpisah dan temukan sendiri rumus hubungan antar variabel!
+Pelajari hubungan antara **jarak, kecepatan, dan waktu** dengan mencoba berbagai nilai dan melihat hasilnya secara bersamaan.  
+Temukan sendiri rumus dan keterkaitannya!  
+---
 """)
 
-with st.expander("📘 Apa itu Jarak, Kecepatan, dan Waktu?"):
+with st.expander("📘 Penjelasan Konsep"):
     st.markdown("""
-    - **Jarak**: Panjang lintasan yang ditempuh suatu benda (satuan: km).
-    - **Kecepatan**: Seberapa cepat benda bergerak (satuan: km/jam).
-    - **Waktu**: Lama waktu benda bergerak (satuan: jam).
-
-    Yuk kita cari tahu sendiri rumus-rumus hubungan ketiganya! 🚀
+    - **Jarak**: seberapa jauh benda bergerak (km).
+    - **Kecepatan**: seberapa cepat benda bergerak (km/jam).
+    - **Waktu**: berapa lama benda bergerak (jam).
+    
+    🧠 Gunakan eksplorasi di bawah ini untuk menemukan sendiri rumus masing-masing.
     """)
 
-menu = st.sidebar.selectbox("Pilih topik eksplorasi:", ["Temukan Jarak", "Temukan Kecepatan", "Temukan Waktu", "Simulasi Gerak"])
+# Layout 3 kolom untuk eksplorasi serentak
+col1, col2, col3 = st.columns(3)
 
-# ================================
-# 🔢 CARI JARAK
-# ================================
-if menu == "Temukan Jarak":
+# ========================
+# 🟦 KOLOM 1: JARAK
+# ========================
+with col1:
     st.subheader("📏 Temukan Jarak")
-    st.markdown("Masukkan kecepatan dan waktu, lalu coba amati bagaimana jarak berubah!")
+    kecepatan_j = st.slider("🚗 Kecepatan (km/jam)", 0, 200, 60, key="k_j")
+    waktu_j = st.slider("⏱️ Waktu (jam)", 0, 10, 2, key="w_j")
+    if kecepatan_j and waktu_j:
+        jarak = int(kecepatan_j * waktu_j)
+        st.success(f"Jarak = {jarak} km")
+    with st.expander("💡 Refleksi Jarak"):
+        st.markdown("- Apa yang terjadi jika kecepatan bertambah?\n- Bagaimana jika waktunya lebih lama?")
 
-    kecepatan = st.slider("🚗 Kecepatan (km/jam)", 0, 200, 60, step=1)
-    waktu = st.slider("⏱️ Waktu (jam)", 0, 10, 1, step=1)
-
-    if st.button("🔍 Hitung Jarak"):
-        jarak = int(kecepatan * waktu)
-        st.success(f"Jarak yang ditempuh: **{jarak} km**")
-        st.info("🧠 Apa yang terjadi jika kecepatan atau waktu ditambah?")
-    
-    with st.expander("💡 Coba renungkan..."):
-        st.markdown("""
-        - Bagaimana hubungan antara jarak, kecepatan, dan waktu?
-        - Apa rumus yang kamu temukan dari percobaan ini?
-        """)
-
-# ================================
-# 🔢 CARI KECEPATAN
-# ================================
-elif menu == "Temukan Kecepatan":
+# ========================
+# 🟩 KOLOM 2: KECEPATAN
+# ========================
+with col2:
     st.subheader("🚀 Temukan Kecepatan")
-    st.markdown("Masukkan jarak dan waktu, lalu amati bagaimana hasil kecepatan berubah.")
+    jarak_k = st.slider("📏 Jarak (km)", 0, 500, 120, key="j_k")
+    waktu_k = st.slider("⏱️ Waktu (jam)", 1, 10, 2, key="w_k")  # waktu tidak boleh 0
+    if jarak_k and waktu_k:
+        kecepatan = int(jarak_k / waktu_k)
+        st.success(f"Kecepatan = {kecepatan} km/jam")
+    with st.expander("💡 Refleksi Kecepatan"):
+        st.markdown("- Apa yang terjadi jika jarak tetap tapi waktu makin lama?\n- Apakah kecepatannya bertambah atau berkurang?")
 
-    jarak = st.slider("📏 Jarak (km)", 0, 500, 120, step=1)
-    waktu = st.slider("⏱️ Waktu (jam)", 1, 10, 2, step=1)
-
-    if st.button("🔍 Hitung Kecepatan"):
-        kecepatan = int(jarak / waktu)
-        st.success(f"Kecepatan: **{kecepatan} km/jam**")
-        st.info("🧠 Coba kurangi waktu. Apa yang terjadi pada kecepatan?")
-
-    with st.expander("💡 Pertanyaan Pemandu"):
-        st.markdown("""
-        - Bagaimana caramu mendapatkan kecepatan dari jarak dan waktu?
-        - Apa rumus yang kamu simpulkan?
-        """)
-
-# ================================
-# 🔢 CARI WAKTU
-# ================================
-elif menu == "Temukan Waktu":
+# ========================
+# 🟥 KOLOM 3: WAKTU
+# ========================
+with col3:
     st.subheader("⏱️ Temukan Waktu")
-    st.markdown("Masukkan jarak dan kecepatan, lalu lihat bagaimana waktu berubah.")
+    jarak_w = st.slider("📏 Jarak (km)", 0, 500, 100, key="j_w")
+    kecepatan_w = st.slider("🚗 Kecepatan (km/jam)", 1, 200, 50, key="k_w")  # kecepatan tidak boleh 0
+    if jarak_w and kecepatan_w:
+        waktu = int(jarak_w / kecepatan_w)
+        st.success(f"Waktu = {waktu} jam")
+    with st.expander("💡 Refleksi Waktu"):
+        st.markdown("- Bagaimana pengaruh kecepatan terhadap waktu tempuh?\n- Jika jaraknya tetap dan kecepatan naik, apa yang terjadi?")
 
-    jarak = st.slider("📏 Jarak (km)", 0, 500, 100, step=1)
-    kecepatan = st.slider("🚗 Kecepatan (km/jam)", 1, 200, 50, step=1)
+# ========================
+# 📈 GRAFIK SIMULASI
+# ========================
+st.markdown("---")
+st.subheader("📈 Simulasi Grafik Gerak (Jarak vs Waktu)")
 
-    if st.button("🔍 Hitung Waktu"):
-        waktu = int(jarak / kecepatan)
-        st.success(f"Waktu tempuh: **{waktu} jam**")
-        st.info("🧠 Semakin cepat lajunya, semakin singkat waktu yang dibutuhkan.")
+col_g1, col_g2 = st.columns([2, 1])
+with col_g2:
+    kecepatan_sim = st.slider("🚗 Kecepatan Simulasi (km/jam)", 10, 200, 60)
+    waktu_maks = st.slider("⏱️ Lama Simulasi (jam)", 1, 10, 5)
 
-    with st.expander("💡 Refleksi Konsep"):
-        st.markdown("""
-        - Dari mana kamu tahu waktu bisa dihitung dengan rumus tertentu?
-        - Bandingkan hasilnya dengan perhitungan manualmu.
-        """)
-
-# ================================
-# 📈 SIMULASI GRAFIK
-# ================================
-elif menu == "Simulasi Gerak":
-    st.subheader("📈 Simulasi Grafik Gerak (Jarak vs Waktu)")
-
-    with st.expander("🎮 Atur Kecepatan dan Lama Waktu untuk Simulasi:"):
-        kecepatan_sim = st.slider("🚗 Kecepatan benda (km/jam)", 10, 200, 60, step=1)
-        waktu_maks = st.slider("⏱️ Durasi pengamatan (jam)", 1, 10, 5, step=1)
-
-    # Data grafik
+with col_g1:
     waktu_array = np.linspace(0, waktu_maks, 100)
     jarak_array = kecepatan_sim * waktu_array
 
@@ -102,11 +81,9 @@ elif menu == "Simulasi Gerak":
     ax.plot(waktu_array, jarak_array, color="blue", linewidth=2)
     ax.set_xlabel("Waktu (jam)")
     ax.set_ylabel("Jarak (km)")
-    ax.set_title("Simulasi Gerak Lurus (Jarak vs Waktu)")
+    ax.set_title("Grafik Gerak Lurus: Jarak vs Waktu")
     ax.grid(True)
 
     st.pyplot(fig)
-    st.info(f"📌 Kecepatan tetap: {kecepatan_sim} km/jam → garis lurus menunjukkan pertambahan jarak konstan terhadap waktu.")
 
-st.markdown("---")
-st.caption("📘 Media ini dirancang untuk pembelajaran aktif dan eksploratif.")
+st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri. Media ini dirancang untuk pembelajaran aktif.")
