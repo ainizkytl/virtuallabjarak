@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 st.set_page_config(page_title="Kalkulator JKW Discovery - All in One", layout="wide")
-st.title("📚 Kalkulator Jarak – Kecepatan – Waktu (Discovery Learning)")
+st.title("📚 Kalkulator Jarak – Kecepatan – Waktu")
 
 st.markdown("""
 Pelajari hubungan antara **jarak, kecepatan, dan waktu** dengan mencoba berbagai nilai dan melihat hasilnya secara bersamaan.  
@@ -33,8 +33,7 @@ with col1:
     if kecepatan_j and waktu_j:
         jarak = int(kecepatan_j * waktu_j)
         st.success(f"Jarak = {jarak} km")
-    with st.expander("💡 Refleksi Jarak"):
-        st.markdown("- Apa yang terjadi jika kecepatan bertambah?\n- Bagaimana jika waktunya lebih lama?")
+
 
 # ========================
 # 🟩 KOLOM 2: KECEPATAN
@@ -46,9 +45,7 @@ with col2:
     if jarak_k and waktu_k:
         kecepatan = int(jarak_k / waktu_k)
         st.success(f"Kecepatan = {kecepatan} km/jam")
-    with st.expander("💡 Refleksi Kecepatan"):
-        st.markdown("- Apa yang terjadi jika jarak tetap tapi waktu makin lama?\n- Apakah kecepatannya bertambah atau berkurang?")
-
+    
 # ========================
 # 🟥 KOLOM 3: WAKTU
 # ========================
@@ -59,8 +56,7 @@ with col3:
     if jarak_w and kecepatan_w:
         waktu = int(jarak_w / kecepatan_w)
         st.success(f"Waktu = {waktu} jam")
-    with st.expander("💡 Refleksi Waktu"):
-        st.markdown("- Bagaimana pengaruh kecepatan terhadap waktu tempuh?\n- Jika jaraknya tetap dan kecepatan naik, apa yang terjadi?")
+    
 
 # ========================
 # 📈 GRAFIK SIMULASI
