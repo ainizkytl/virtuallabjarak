@@ -65,13 +65,7 @@ with st.expander("🧠 Refleksi: Apa Hubungan Ketiganya?"):
     👉 Dari eksplorasi di atas, dapatkah kamu menebak **rumus** yang menghubungkan ketiganya?
     """)
 
-    st.markdown("**💬 Jawaban Refleksi Otomatis (bisa dibandingkan):**")
-    with st.container():
-        st.info("""
-        - **Jarak (S)** = Kecepatan (v) × Waktu (t)  
-        - **Kecepatan (v)** = Jarak (S) ÷ Waktu (t)  
-        - **Waktu (t)** = Jarak (S) ÷ Kecepatan (v)
-        """)
+    
         
 # ========================
 # 📈 Grafik Simulasi Gerak
