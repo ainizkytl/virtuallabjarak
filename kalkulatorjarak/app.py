@@ -2,26 +2,42 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.set_page_config(page_title="Kalkulator JKW Discovery - All in One", layout="wide")
-st.title("📚 Kalkulator Jarak – Kecepatan – Waktu")
+# Konfigurasi Halaman
+st.set_page_config(page_title="Kalkulator JKW Discovery", layout="wide")
+st.title("📚 Kalkulator Jarak – Kecepatan – Waktu (JKW)")
 
 st.markdown("""
-Pelajari hubungan antara **jarak, kecepatan, dan waktu** dengan mencoba berbagai nilai dan melihat hasilnya secara bersamaan.  
-Temukan sendiri rumus dan keterkaitannya!  
+Pelajari hubungan antara **jarak (S)**, **kecepatan (v)**, dan **waktu (t)**  
+dengan eksplorasi interaktif melalui simulasi!  
+Coba ubah nilai dan **temukan sendiri rumusnya** 📐
+
 ---
+
+🧭 **Cara Menggunakan Aplikasi Ini**:
+1. Gunakan **slider** untuk memasukkan nilai kecepatan, waktu, atau jarak.
+2. Lihat hasil perhitungan langsung di bawahnya.
+3. Amati perubahan **grafik gerak** untuk memahami pola hubungan.
+4. Gunakan bagian **refleksi dan interpretasi** untuk berpikir kritis.
 """)
 
-with st.expander("📘 Penjelasan Konsep Dasar"):
+# ========================
+# 📘 Penjelasan Konsep
+# ========================
+with st.expander("🔍 Penjelasan Konsep Dasar"):
     st.markdown("""
-    - **Jarak (S)**: seberapa jauh benda bergerak (km)  
-    - **Kecepatan (v)**: seberapa cepat benda bergerak (km/jam)  
-    - **Waktu (t)**: lamanya benda bergerak (jam)  
+    - **Jarak (S)**: seberapa jauh benda bergerak (dalam kilometer - km)  
+    - **Kecepatan (v)**: seberapa cepat benda bergerak (dalam km/jam)  
+    - **Waktu (t)**: lamanya benda bergerak (dalam jam)
+
+    🧠 Rumus dasar:
+    - S = v × t
+    - v = S ÷ t
+    - t = S ÷ v
     """)
 
 # ========================
 # 🧪 Eksplorasi Interaktif
 # ========================
-
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -29,37 +45,36 @@ with col1:
     kecepatan_j = st.slider("🚗 Kecepatan (km/jam)", 0, 200, 60, key="k_j")
     waktu_j = st.slider("⏱️ Waktu (jam)", 0, 10, 2, key="w_j")
     jarak = kecepatan_j * waktu_j
-    st.success(f"Jarak = {int(jarak)} km")
+    st.success(f"🔹 Jarak = {int(jarak)} km")
 
 with col2:
     st.subheader("🚀 Temukan Kecepatan")
     jarak_k = st.slider("📏 Jarak (km)", 0, 500, 120, key="j_k")
     waktu_k = st.slider("⏱️ Waktu (jam)", 1, 10, 2, key="w_k")
     kecepatan = jarak_k / waktu_k
-    st.success(f"Kecepatan = {int(kecepatan)} km/jam")
+    st.success(f"🔹 Kecepatan = {int(kecepatan)} km/jam")
 
 with col3:
     st.subheader("⏱️ Temukan Waktu")
     jarak_w = st.slider("📏 Jarak (km)", 0, 500, 100, key="j_w")
     kecepatan_w = st.slider("🚗 Kecepatan (km/jam)", 1, 200, 50, key="k_w")
     waktu = jarak_w / kecepatan_w
-    st.success(f"Waktu = {round(waktu, 2)} jam")
+    st.success(f"🔹 Waktu = {round(waktu, 2)} jam")
 
 # ========================
 # 🧠 Discovery Learning Prompt
 # ========================
 with st.expander("🧠 Refleksi: Apa Hubungan Ketiganya?"):
     st.markdown("""
-    🔍 **Coba perhatikan!**  
-    - Jika kecepatan dinaikkan tapi waktu tetap, apa yang terjadi pada jarak?  
-    - Jika jarak tetap dan waktu lebih lama, bagaimana kecepatan berubah?  
-    - Jika kecepatan tetap dan jarak naik, bagaimana waktu berubah?  
+    - Jika **kecepatan dinaikkan**, tapi waktu tetap, apa yang terjadi pada jarak?  
+    - Jika **jarak tetap** dan waktu lebih lama, bagaimana kecepatan berubah?  
+    - Jika kecepatan tetap dan **jarak naik**, bagaimana waktu berubah?  
 
-    👉 Dari eksplorasi di atas, dapatkah kamu menebak **rumus** yang menghubungkan ketiganya?
+    💡 Dari eksplorasi ini, dapatkah kamu menyimpulkan **rumus matematis** yang menghubungkan ketiganya?
     """)
 
 # ========================
-# 📈 Grafik Simulasi Gerak
+# 📈 Simulasi Grafik Gerak
 # ========================
 st.markdown("---")
 st.subheader("📈 Simulasi Grafik Gerak (Jarak vs Waktu)")
@@ -73,23 +88,24 @@ with col_g1:
     waktu_array = np.linspace(0, waktu_maks, 100)
     jarak_array = kecepatan_sim * waktu_array
 
-    fig, ax = plt.subplots()
-    ax.plot(waktu_array, jarak_array, color="blue", linewidth=2)
-    ax.set_xlabel("Waktu (jam)")
-    ax.set_ylabel("Jarak (km)")
-    ax.set_title(f"Grafik Gerak Lurus: Kecepatan {kecepatan_sim} km/jam")
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(waktu_array, jarak_array, color="#FF6F61", linewidth=3, linestyle='--', marker='o', markersize=2)
+    ax.set_xlabel("⏱️ Waktu (jam)", fontsize=12)
+    ax.set_ylabel("📏 Jarak (km)", fontsize=12)
+    ax.set_title(f"Simulasi Gerak Lurus: {kecepatan_sim} km/jam", fontsize=14)
     ax.grid(True)
+    ax.set_facecolor("#f0f0f0")
 
     st.pyplot(fig)
 
 with st.expander("📊 Interpretasi Grafik"):
     st.markdown(f"""
-    - Grafik menunjukkan hubungan **linier** antara jarak dan waktu.  
-    - Semakin besar waktu, semakin jauh jarak yang ditempuh.  
-    - **Gradien (kemiringan garis)** menunjukkan kecepatan.  
-    - Pada kecepatan {kecepatan_sim} km/jam, setiap jamnya bertambah {kecepatan_sim} km.
+    - Grafik menunjukkan **garis lurus** karena gerak benda berkecepatan tetap.  
+    - Setiap kenaikan 1 jam, jarak bertambah **{kecepatan_sim} km**.  
+    - **Kemiringan garis (gradien)** mewakili kecepatan.  
+    - Lebih curam = lebih cepat!
 
-    💬 Apa yang akan terjadi jika kecepatan dinaikkan?
+    ❓ Apa yang terjadi jika kamu meningkatkan kecepatan simulasi?
     """)
 
-st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri.")
+st.caption("🎯 Eksplorasi ini mendukung pembelajaran mandiri dan pemahaman konsep fungsional linear.")
