@@ -92,4 +92,4 @@ with st.expander("📊 Interpretasi Grafik"):
     💬 Apa yang akan terjadi jika kecepatan dinaikkan?
     """)
 
-st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri.
+st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri.")
