@@ -101,7 +101,7 @@ with st.expander("📊 Interpretasi Grafik"):
     - **Kemiringan garis (gradien)** mewakili kecepatan.  
     - Lebih curam = lebih cepat!
 
-    ❓ Apa yang terjadi jika kamu meningkatkan kecepatan simulasi?
+    Apa yang terjadi jika kamu meningkatkan kecepatan simulasi?
     """)
 
 st.caption("🎯 Eksplorasi ini mendukung pembelajaran mandiri dan pemahaman konsep fungsional linear.")
