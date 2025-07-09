@@ -101,6 +101,7 @@ with st.expander("📊 Interpretasi Grafik"):
     - **Kemiringan garis (gradien)** mewakili kecepatan.  
     - Lebih curam = lebih cepat!
 
+    st.markdown("""
     Apa yang terjadi jika kamu meningkatkan kecepatan simulasi?
     """)
 
