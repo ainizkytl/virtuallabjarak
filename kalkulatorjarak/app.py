@@ -66,7 +66,7 @@ with st.expander("🧠 Refleksi: Apa Hubungan Ketiganya?"):
     - Jika **jarak tetap** dan waktu lebih lama, bagaimana kecepatan berubah?  
     - Jika kecepatan tetap dan **jarak naik**, bagaimana waktu berubah?  
 
-    💡 Dari eksplorasi ini, dapatkah kamu menyimpulkan **rumus matematis** yang menghubungkan ketiganya?
+    Dari eksplorasi ini, dapatkah kamu menyimpulkan **rumus matematis** yang menghubungkan ketiganya?
     """)
 
 # ========================
