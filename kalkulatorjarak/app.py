@@ -17,13 +17,8 @@ with st.expander("📘 Penjelasan Konsep Dasar"):
     - **Kecepatan (v)**: seberapa cepat benda bergerak (km/jam)
     - **Waktu (t)**: lamanya benda bergerak (jam)
     
-    ⚠️ Salah satu konsep penting dalam gerak lurus adalah:
-    > **S = v × t**  
-    > **v = S ÷ t**  
-    > **t = S ÷ v**
     
-    💡 Tapi, yuk coba **temukan rumus ini sendiri** lewat eksplorasi di bawah ini!
-    """)
+   
 
 # ========================
 # 🧪 Eksplorasi Interaktif
