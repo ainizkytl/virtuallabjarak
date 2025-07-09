@@ -29,11 +29,7 @@ with st.expander("🔍 Penjelasan Konsep Dasar"):
     - **Kecepatan (v)**: seberapa cepat benda bergerak (dalam km/jam)  
     - **Waktu (t)**: lamanya benda bergerak (dalam jam)
 
-    🧠 Rumus dasar:
-    - S = v × t
-    - v = S ÷ t
-    - t = S ÷ v
-    """)
+    
 
 # ========================
 # 🧪 Eksplorasi Interaktif
