@@ -27,13 +27,7 @@ if menu == "Pengantar":
     * **Kecepatan (v)**: Seberapa cepat suatu benda bergerak. Ini adalah perbandingan antara jarak yang ditempuh dengan waktu yang dibutuhkan. Satuan umumnya adalah kilometer per jam (km/jam) atau meter per detik (m/s).
     * **Waktu (t)**: Durasi pergerakan suatu benda. Satuan umumnya adalah jam (jam) atau detik (s).
 
-    **Hubungan Dasar:**
-    Ketiga konsep ini saling terkait erat dengan rumus dasar:
-    $$ Jarak = Kecepatan \\times Waktu $$
-    $$ S = v \\times t $$
-    Dari rumus ini, kita juga bisa menurunkan rumus untuk mencari kecepatan atau waktu:
-    $$ Kecepatan = \\frac{Jarak}{Waktu} \\implies v = \\frac{S}{t} $$
-    $$ Waktu = \\frac{Jarak}{Kecepatan} \\implies t = \\frac{S}{v} $$
+    
 
     **Skenario Khusus:**
     Dalam media ini, kita akan fokus pada dua skenario menarik:
