@@ -29,7 +29,11 @@ with st.expander("🔍 Penjelasan Konsep Dasar"):
     - **Kecepatan (v)**: seberapa cepat benda bergerak (dalam km/jam)  
     - **Waktu (t)**: lamanya benda bergerak (dalam jam)
 
-    
+    🧠 Rumus dasar:
+    - S = v × t
+    - v = S ÷ t
+    - t = S ÷ v
+    """)
 
 # ========================
 # 🧪 Eksplorasi Interaktif
@@ -66,7 +70,7 @@ with st.expander("🧠 Refleksi: Apa Hubungan Ketiganya?"):
     - Jika **jarak tetap** dan waktu lebih lama, bagaimana kecepatan berubah?  
     - Jika kecepatan tetap dan **jarak naik**, bagaimana waktu berubah?  
 
-    Dari eksplorasi ini, dapatkah kamu menyimpulkan **rumus matematis** yang menghubungkan ketiganya?
+    💡 Dari eksplorasi ini, dapatkah kamu menyimpulkan **rumus matematis** yang menghubungkan ketiganya?
     """)
 
 # ========================
@@ -101,8 +105,7 @@ with st.expander("📊 Interpretasi Grafik"):
     - **Kemiringan garis (gradien)** mewakili kecepatan.  
     - Lebih curam = lebih cepat!
 
-    st.markdown("""
-    Apa yang terjadi jika kamu meningkatkan kecepatan simulasi?
+    ❓ Apa yang terjadi jika kamu meningkatkan kecepatan simulasi?
     """)
 
 st.caption("🎯 Eksplorasi ini mendukung pembelajaran mandiri dan pemahaman konsep fungsional linear.")
