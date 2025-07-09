@@ -13,12 +13,10 @@ Temukan sendiri rumus dan keterkaitannya!
 
 with st.expander("📘 Penjelasan Konsep Dasar"):
     st.markdown("""
-    - **Jarak (S)**: seberapa jauh benda bergerak (km)
-    - **Kecepatan (v)**: seberapa cepat benda bergerak (km/jam)
-    - **Waktu (t)**: lamanya benda bergerak (jam)
-    
-    
-   
+    - **Jarak (S)**: seberapa jauh benda bergerak (km)  
+    - **Kecepatan (v)**: seberapa cepat benda bergerak (km/jam)  
+    - **Waktu (t)**: lamanya benda bergerak (jam)  
+    """)
 
 # ========================
 # 🧪 Eksplorasi Interaktif
@@ -53,15 +51,13 @@ with col3:
 with st.expander("🧠 Refleksi: Apa Hubungan Ketiganya?"):
     st.markdown("""
     🔍 **Coba perhatikan!**  
-    - Jika kecepatan dinaikkan tapi waktu tetap, apa yang terjadi pada jarak?
-    - Jika jarak tetap dan waktu lebih lama, bagaimana kecepatan berubah?
-    - Jika kecepatan tetap dan jarak naik, bagaimana waktu berubah?
+    - Jika kecepatan dinaikkan tapi waktu tetap, apa yang terjadi pada jarak?  
+    - Jika jarak tetap dan waktu lebih lama, bagaimana kecepatan berubah?  
+    - Jika kecepatan tetap dan jarak naik, bagaimana waktu berubah?  
 
     👉 Dari eksplorasi di atas, dapatkah kamu menebak **rumus** yang menghubungkan ketiganya?
     """)
 
-    
-        
 # ========================
 # 📈 Grafik Simulasi Gerak
 # ========================
@@ -88,12 +84,12 @@ with col_g1:
 
 with st.expander("📊 Interpretasi Grafik"):
     st.markdown(f"""
-    - Grafik menunjukkan hubungan **linier** antara jarak dan waktu.
-    - Semakin besar waktu, semakin jauh jarak yang ditempuh.
-    - **Gradien (kemiringan garis)** menunjukkan kecepatan.
+    - Grafik menunjukkan hubungan **linier** antara jarak dan waktu.  
+    - Semakin besar waktu, semakin jauh jarak yang ditempuh.  
+    - **Gradien (kemiringan garis)** menunjukkan kecepatan.  
     - Pada kecepatan {kecepatan_sim} km/jam, setiap jamnya bertambah {kecepatan_sim} km.
 
     💬 Apa yang akan terjadi jika kecepatan dinaikkan?
     """)
 
-st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri. Media ini dirancang untuk pembelajaran aktif dan reflektif.")
+st.caption("🔍 Gunakan semua kolom untuk eksplorasi mandiri.
